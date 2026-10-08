@@ -1,10 +1,26 @@
 <script setup>
 // 引入 ref 
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
+const GoodDay = ref('')
 
 // 创建一个变量，获取存储输入的文字
-const aTodoText = ref('')
+// 对象形式的
+const aTodoText = ref({
+    text: ''
+})
+// watch 监视一个变量
+watch(GoodDay, GDhi)
+// watch 侦听一个对象，需要`深度侦听`，加上一个对象 { deep:true }
+watch(aTodoText, GDhiDeep, { deep: true })
+
+function GDhi() {
+    console.log('watch侦听器已触发')
+}
+function GDhiDeep() {
+    console.log('watch depp 深度侦听器已触发')
+}
+
 // 创建一个数组，把每一项存入
 const aTodoList = ref([
     {
@@ -16,10 +32,9 @@ const aTodoList = ref([
         text: "睡觉"
     },
     {
-        isComplete: true,  // 状态：是否被选中 / 完成或者未完成
+        isComplete: false,  // 状态：是否被选中 / 完成或者未完成
         text: "喝水"
     },
-
 ])
 
 function add() {
@@ -27,10 +42,10 @@ function add() {
     // 追加新的todo到list中
     aTodoList.value.push({
         isComplete: false,
-        text: aTodoText.value
+        text: aTodoText.value.text
     })
     // 然后清空刚刚的输入框内容
-    aTodoText.value = ''
+    aTodoText.value.text = ''
 }
 // 删除指定的todo ,索引为 index 的位置元素
 function del(index) {
@@ -44,18 +59,20 @@ function del(index) {
 
 <template>
     <div class="todo-app">
-        <div class="title">Todo App</div>
-
+        <div class="title">Todo App 2</div>
+        <br/><br/>
+        <input v-model="GoodDay" class="todo-input" type="text" placeholder="GoodDay! 我是watch侦听器" />
+        <hr/>
         <div class="todo-from">
-            <input v-model="aTodoText" class="todo-input" type="text" placeholder="输入今日待办 ToDo" />
+
+            <input v-model="aTodoText.text" class="todo-input" type="text" placeholder="输入今日待办 ToDo" />
             <div @click="add" class="todo-button">add todo</div>
         </div>
 
         <!-- v-for根据数组的元素数创建内容，itemAAA代表每一项/对象，aTodoList代表总的数组 -->
         <!-- 其中v-for="(itemAAA, index) 的 index 是每一个对象的下标，第几个-->
         <!-- <div v-for="itemAAA in aTodoList" class="item completed"> -->
-        <div v-for="(itemAAA, index) in aTodoList" 
-            :class="[itemAAA.isComplete ? 'completed item' : 'item']">
+        <div v-for="(itemAAA, index) in aTodoList" :class="[itemAAA.isComplete ? 'completed item' : 'item']">
             <!-- 如果isComplete为true被选中，则类名为 complete和item，反之item -->
             <div>
                 <!-- v-model控制选中状态 由item里的isComplete的true false决定 -->
