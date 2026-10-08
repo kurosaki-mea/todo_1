@@ -49,7 +49,8 @@ function del(index) {
         <!-- v-for根据数组的元素数创建内容，itemAAA代表每一项/对象，aTodoList代表总的数组 -->
         <!-- 其中v-for="(itemAAA, index) 的 index 是每一个对象的下标，第几个-->
         <!-- <div v-for="itemAAA in aTodoList" class="item completed"> -->
-        <div v-for="(itemAAA, index) in aTodoList" :class="[itemAAA.isComplete ? 'completed item' : 'item']">
+        <div v-for="(itemAAA, index) in aTodoList" 
+            :class="[itemAAA.isComplete ? 'completed item' : 'item']">
             <!-- 如果isComplete为true被选中，则类名为 complete和item，反之item -->
             <div>
                 <!-- v-model控制选中状态 由item里的isComplete的true false决定 -->
