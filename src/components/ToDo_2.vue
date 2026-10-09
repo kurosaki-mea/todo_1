@@ -3,6 +3,9 @@
 import { ref, watch } from 'vue';
 
 // 
+// 区别于上一个，加了 watch 侦听器
+// 
+// 
 // 创建一个变量，等会watch用
 const GoodDay = ref('')
 

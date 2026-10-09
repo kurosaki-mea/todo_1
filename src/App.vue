@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+// 第一个todolist
 // import ToDo_1 from './components/ToDo_1.vue'
 
+// 第二个todolist，测试watch
 import ToDo_2 from './components/ToDo_2.vue'
+// 父组件 传给 子组件
 import MyButton from './components/button.vue'
+// 子组件 传给 父组件
 import MyButtonEmits from './components/buttonEmits.vue'
 
 // 声明一个变量保存从子组件传上来的数据  子 传 父
