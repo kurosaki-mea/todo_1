@@ -2,6 +2,7 @@
 // 引入 ref 
 import { ref, watch } from 'vue';
 
+// 创建一个变量，等会watch用
 const GoodDay = ref('')
 
 // 创建一个变量，获取存储输入的文字
