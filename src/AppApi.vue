@@ -7,7 +7,6 @@ import ApiTodo_1 from './components/ApiTodo_1.vue';
 <template>
     <ApiTodo_1 />
 
-
 </template>
 
 
