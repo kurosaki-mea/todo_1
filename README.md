@@ -12,8 +12,8 @@ https://www.bilibili.com/video/BV1W1421173W
 
 # tips
 ## 关于 main.ts
-**纯前端版，取消注释这行：**
+**1、纯前端版，取消注释这行：**
 ` import App from './App.vue' `
 
-**看 Nodejs 接口版时，取消注释这行：**
+**2、看 Nodejs 接口版时，取消注释这行：**
 ` import App from './AppApi.vue' `
